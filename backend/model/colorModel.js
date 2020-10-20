@@ -7,11 +7,11 @@ const colorSchema = new mongoose.Schema({
     color: {type: String, required: true},
     productRef:{
         type: Schema.Types.ObjectId,
-        ref:'productRef'
+        ref:'Product'
     },
     sizes:[{
             type: Schema.Types.ObjectId,
-            ref:"size"}]   
+            ref:"Size"}]   
 }, {
     timestamp: true,
 })
