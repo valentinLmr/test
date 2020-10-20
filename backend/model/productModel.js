@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
     description:{type: String, required:true},
     price:{type: Number, required:true},
     colors:[{type: Schema.Types.ObjectId,
-        ref: "color"
+        ref: "Color"
     }],
     rating:{type: Number, required:true},
     numberOfReview:{type: Number, required:true},

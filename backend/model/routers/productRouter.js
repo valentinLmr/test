@@ -7,27 +7,23 @@ const productRouter = express.Router();
 
 productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
     await Product.deleteMany();
+    await Color.deleteMany()
     const createdProduct = await Product.insertMany(data.products)
-    const createdColor =  data.colors
+    
 
 
+    for (let i = 0; i < createdProduct.length; i++){
+        
+        let createdColor = await Color.insertMany(data.colors)
 
-    createdProduct.map( el => {
-        console.log(el)
-        createdColor.map(color => {
-            let newColor = new Color(color)
-            newColor.productRef = el._id
-            el.colors.push(newColor)
-            newColor.save()
-            el.save()
-            console.log(newColor)
-
-            
+        createdColor.map( color => {
+            color.productRef = createdProduct[i]._id
+            color.save            
+            createdProduct[i].colors.push(color)                
         })
-     })
-     res.send(createdProduct)
-
-
+        Product.findOne({ name: 'tunique' }).populate('colors')
+  }
+    res.send(createdProduct)
 }))
 
 export default productRouter
