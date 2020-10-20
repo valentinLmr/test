@@ -1,319 +1,110 @@
-export default {
+import bcrypt from 'bcryptjs'
+
+ const data = {
+   colors: [{
+     color: 'red',
+     sizes:[],
+     productRef: null
+   },
+   {
+    color: 'blue',
+    sizes:[],
+    productRef: null
+
+  },
+  {
+    color: 'yellow',
+    sizes:[],
+    productRef: null
+
+  },
+   ],
+   sizes:[{
+     size:"s",
+     countInStock: null
+   },
+   {
+    size:"m",
+    countInStock:null
+  },
+  {
+    size:"l",
+    countInStock:null
+  },
+  {
+    size:"xl",
+    countInStock:null
+  }
+  ],
+  users:[
+  {
+    name:'Valentin',
+    email:'admin@exemple.com',
+    password: bcrypt.hashSync('1234', 8),
+    isAdmin: true,
+  },
+  {
+    name:'Maelle',
+    email:'user@exemple.com',
+    password: bcrypt.hashSync('1234', 8),
+    isAdmin: false,
+  },
+],
   products: [
     {
-      id: 1,
       image: "../image/OIP.jpeg",
-      name: "tunique bandilas",
-      categories: "Robe",
+      name: "tunique",
+      category: "Robe",
       brand: "Vans",
       price: 40,
-      colors: [
-        {
-          color: "red",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 0,
-            },
-          ],
-        },
-        {
-          color: "blue",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 0,
-            },
-          ],
-        },
-        {
-          color: "green",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 0,
-            },
-          ],
-        },
-      ],
       rating: 4.5,
-      numReviews: 10,
+      numberOfReview: 10,
+      description: 'hello World',
+
     },
     {
-      id: 2,
       image: "../image/OIP.jpeg",
-      name: "tunique banditas",
-      categories: "Robe",
+      name: "dress banditas",
+      category: "Robe",
       brand: "Veja",
       price: 40,
-      colors: [
-        {
-          color: "red",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "blue",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "green",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-      ],
       rating: 4.5,
-      numReviews: 10,
+      description: 'hello World',
+      numberOfReview: 10,
+    
     },
     {
-      id: 3,
       image: "../image/OIP.jpeg",
-      name: "tunique bandilas",
-      categories: "dress",
+      name: "pants",
+      category: "dress",
       brand: "Veja",
       price: 40,
-      colors: [
-        {
-          color: "red",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "blue",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "green",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-      ],
       rating: 4.5,
-      numReviews: 10,
+      numberOfReview: 10,
+      description:'hello World',
+    
     },
     {
-      id: 4,
       image: "../image/OIP.jpeg",
-      name: "tunique bandilas",
-      categories: "dress",
+      name: "skirt",
+      category: "dress",
       brand: "Banditas",
       price: 40,
-      colors: [
-        {
-          color: "red",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "blue",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "green",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-      ],
       rating: 4.5,
-      numReviews: 10,
+      numberOfReview: 10,
+      description:'hello World',
     },
     {
-      id: 5,
       image: "../image/OIP.jpeg",
-      name: "tunique bandilas",
-      categories: "dress",
+      name: "shoe",
+      category: "dress",
       brand: "Banditas",
       price: 40,
-      colors: [
-        {
-          color: "red",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "blue",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-        {
-          color: "green",
-          sizes: [
-            {
-              size: "s",
-              quantity: 2,
-            },
-            {
-              size: "m",
-              quantity: 2,
-            },
-            {
-              size: "xl",
-              quantity: 2,
-            },
-          ],
-        },
-      ],
       rating: 4.5,
-      numReviews: 10,
-    },
+      numberOfReview: 10,
+      description:'hello World',
+        },
   ],
 };
+
+export default data
