@@ -11,9 +11,9 @@ const colorSchema = new mongoose.Schema({
     },
     sizes:[{
             type: Schema.Types.ObjectId,
-            ref:"Size"}]   
+            ref: 'Size'}]   
 }, {
-    timestamp: true,
+    timestamps: true,
 })
 
 const Color = mongoose.model('Color', colorSchema);
