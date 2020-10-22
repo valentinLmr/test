@@ -6,13 +6,20 @@ import Color from '../colorModel.js'
 import Size from '../sizeModel.js'
 const productRouter = express.Router();
 
+
+
+productRouter.get('/', expressAsyncHandler(async(req,send) => {
+    const products = await Product.find({});
+    res.send(products)
+    })
+);
+
+
 productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
     await Product.deleteMany();
     await Color.deleteMany()
     await Size.deleteMany()
     const createdProduct = await Product.insertMany(data.products)
-    
-
 
     for (let i = 0; i < createdProduct.length; i++){
         
@@ -40,14 +47,16 @@ productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
         Product.findOne({ name: 'tunique' }).populate('colors')
         Color.findOne({color: 'red'}).populate('sizes')
     }
+    res.send({createdProduct})
+}))
 
-        
-    
-
-    
-    
-
-    res.send(createdProduct)
+productRouter.get('/:id', expressAsyncHandler(async(req, res) => {
+    const product = await Product.findById(req.params.id)
+    if(product){
+        res.send(product)
+    }else {
+        res.status(404).send({ message: 'Product Not Found'})
+    }
 }))
 
 export default productRouter

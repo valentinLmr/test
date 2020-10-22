@@ -1,10 +1,17 @@
 import express from "express";
-import data from "./data.js";
 import mongoose from 'mongoose'
+import dotenv from 'dotenv';
 import userRouter from "./model/routers/userRouter.js";
 import productRouter from './model/routers/productRouter.js'
 
+
+dotenv.config()
+
+
 const app = express();
+app.use(express.json())
+app.use(express.urlencoded({ extended : true}));
+
 mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
   useUnifiedTopology: true, 
@@ -21,3 +28,4 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Serve at http://localhost:${port}`);
 });
+
