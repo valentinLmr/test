@@ -4,15 +4,15 @@ const Schema = mongoose.Schema
 
 const sizeSchema = mongoose.Schema({
     size: {type: String, required: true},
-    countInStock: {type: Number, required: true},
-    productRef: {
+    countInStock: {type: Number},
+    colorRef:{
         type: Schema.Types.ObjectId,
-        ref:'product'
-    },
+        ref:'Color'
+    }
 }, {
-    timestamp:true
+    timestamps:true
 })
 
-const Size = mongoose.model(('size', sizeSchema))
+const Size = mongoose.model('Size', sizeSchema);
 
 export default Size
