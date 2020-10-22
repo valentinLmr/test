@@ -39,14 +39,14 @@ import bcrypt from 'bcryptjs'
   users:[
   {
     name:'Valentin',
-    email:'admin@exemple.com',
+    email:'admin@example.com',
     password: bcrypt.hashSync('1234', 8),
     isAdmin: true,
   },
   {
     name:'Maelle',
-    email:'user@exemple.com',
-    password: bcrypt.hashSync('1234', 8),
+    email:'user@example.com',
+    password: bcrypt.hashSync('12345', 8),
     isAdmin: false,
   },
 ],
