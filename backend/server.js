@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv';
 import userRouter from "./model/routers/userRouter.js";
 import productRouter from './model/routers/productRouter.js'
+import data from './data.js'
 
 
 dotenv.config()
@@ -15,11 +16,14 @@ app.use(express.urlencoded({ extended : true}));
 mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
   useUnifiedTopology: true, 
-  userCreateIndex: true,
+  useCreateIndex: true,
 });
 
-app.use('/api/users', userRouter);
+app.use('/api/users', (req, res) => {
+  res.send(data.products)
+});
 app.use('/api/products', productRouter)
+
 app.use((err, req, res, next) => {
   res.status(500).send({message: err.message})
 })
