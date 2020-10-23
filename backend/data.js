@@ -21,19 +21,24 @@ import bcrypt from 'bcryptjs'
    ],
    sizes:[{
      size:"s",
-     countInStock: null
+     countInStock: null,
+     colorRef: null
+     
    },
    {
     size:"m",
-    countInStock:null
+    countInStock: null,
+    colorRef: null
   },
   {
     size:"l",
-    countInStock:null
+    countInStock: null,
+    colorRef: null
   },
   {
     size:"xl",
-    countInStock:null
+    countInStock: null,
+    colorRef: null
   }
   ],
   users:[

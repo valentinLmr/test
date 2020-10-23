@@ -8,8 +8,8 @@ const productRouter = express.Router();
 
 
 
-productRouter.get('/', expressAsyncHandler(async(req,send) => {
-    const products = await Product.find({});
+productRouter.get('/', expressAsyncHandler(async(req ,res) => {
+    let products = await Product.find({});
     res.send(products)
     })
 );
@@ -28,26 +28,34 @@ productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
 
         createdColor.map( color => {
             color.productRef = product._id
-            color.save            
-            product.colors.push(color)                
+            color.save()
+            product.colors.push(color)    
+            product.save()            
         })
         for (let i = 0; i < product.colors.length; i++){
 
             let color = product.colors[i]
+
             let createdSize = await Size.insertMany(data.sizes)
 
             createdSize.map( size => {
                 size.colorRef = color._id
                 size.countInStock = Math.round(Math.random() * 10 + 1)
-                size.save 
+                size.save() 
                 color.sizes.push(size)
+                color.save()
+                
             }) 
         }
-
+    
         Product.findOne({ name: 'tunique' }).populate('colors')
         Color.findOne({color: 'red'}).populate('sizes')
+
+
     }
+
     res.send({createdProduct})
+
 }))
 
 productRouter.get('/:id', expressAsyncHandler(async(req, res) => {
@@ -57,6 +65,10 @@ productRouter.get('/:id', expressAsyncHandler(async(req, res) => {
     }else {
         res.status(404).send({ message: 'Product Not Found'})
     }
+    res.send(createdProduct)
 }))
+
+
+
 
 export default productRouter
