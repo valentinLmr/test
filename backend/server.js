@@ -10,8 +10,8 @@ dotenv.config()
 
 
 const app = express();
-app.use(express.json())
-app.use(express.urlencoded({ extended : true}));
+// app.use(express.json())
+// app.use(express.urlencoded({ extended : true}));
 
 mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/amazona", {
   useNewUrlParser: true,
@@ -19,10 +19,9 @@ mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/amazona", {
   useCreateIndex: true,
 });
 
-app.use('/api/users', (req, res) => {
-  res.send(data.products)
-});
-app.use('/api/products', productRouter)
+console.log('je suis ici')
+app.use('/api/users', userRouter);
+app.use('/api/products', productRouter);
 
 app.use((err, req, res, next) => {
   res.status(500).send({message: err.message})
